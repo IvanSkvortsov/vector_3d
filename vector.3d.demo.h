@@ -44,8 +44,8 @@ int demo_vec3d()
 	vector_3d<T> v4( 1, 5, 8);
 	print_v3d( v4, "v4" );
 
-	//vector_3d<int> v5( v4 );
-	//print_v3d( v5, "v5" );
+	vector_3d<T> v5 = {1, 3, 9};
+	print_v3d( v5, "v5" );
 	return 0;
 }
 

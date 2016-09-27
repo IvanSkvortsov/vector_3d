@@ -37,7 +37,7 @@ void vector_3d<T>::log(const char * _method)const
 }
 
 // vector_3d()
-template<typename T> vector_3d<T>::vector_3d(): _3d_r{0, 0, 0}
+template<typename T> vector_3d<T>::vector_3d(): _data{0, 0, 0}
 {
 	this->log("vector_3d()");
 }
@@ -48,31 +48,31 @@ template<typename T> vector_3d<T>::~vector_3d()
 }
 // vector_3d( Type const & , Type const & , Type const & )
 template<typename T>
-template<typename U> vector_3d<T>::vector_3d( U const & _x, U const & _y, U const & _z ): _3d_r{ T(_x), T(_y), T(_z) }
+template<typename U> vector_3d<T>::vector_3d( U const & _x, U const & _y, U const & _z ): _data{ T(_x), T(_y), T(_z) }
 {
 	this->log<U>("vector_3d(U const & , U const & , U const & )");
 }
-template<typename T> vector_3d<T>::vector_3d( T const & _x, T const & _y, T const & _z ): _3d_r{ _x, _y, _z }
+template<typename T> vector_3d<T>::vector_3d( T const & _x, T const & _y, T const & _z ): _data{ _x, _y, _z }
 {
 	this->log("vector_3d(T const & , T const & , T const & )");
 }
 // vector_3d( Type const * )
 template<typename T>
-template<typename U> vector_3d<T>::vector_3d( U const * v ) : _3d_r{ T(v[0]), T(v[1]), T(v[2]) }
+template<typename U> vector_3d<T>::vector_3d( U const * v ) : _data{ T(v[0]), T(v[1]), T(v[2]) }
 {
 	this->log<U>("vector_3d(U const * )");
 }
-template<typename T> vector_3d<T>::vector_3d( T const * v ) : _3d_r{ v[0], v[1], v[2] }
+template<typename T> vector_3d<T>::vector_3d( T const * v ) : _data{ v[0], v[1], v[2] }
 {
 	this->log("vector_3d(T const * )");
 }
 // vector_3d( vector_3d<Type> const & )
 template<typename T>
-template<typename U> vector_3d<T>::vector_3d( vector_3d<U> const & v ) : _3d_r{ T(v[0]), T(v[1]), T(v[2]) }
+template<typename U> vector_3d<T>::vector_3d( vector_3d<U> const & v ) : _data{ T(v[0]), T(v[1]), T(v[2]) }
 {
 	this->log<U>("vector_3d( vector_3d<U> const & )");
 }
-template<typename T> vector_3d<T>::vector_3d( vector_3d<T> const & v ) : _3d_r{ v[0], v[1], v[2] }
+template<typename T> vector_3d<T>::vector_3d( vector_3d<T> const & v ) : _data{ v[0], v[1], v[2] }
 {
 	this->log("vector_3d( vector_3d<T> const & )");
 }
@@ -93,26 +93,26 @@ template<typename T> vector_3d<T> & vector_3d<T>::operator=( vector_3d<T> const 
 template<typename T>
 template<typename U> vector_3d<T> & vector_3d<T>::operator=( U const * v )
 {
-	for(int i = 0; i < 3; ++i) this->_3d_r[i] = v[i];
+	for(int i = 0; i < 3; ++i) this->_data[i] = v[i];
 	return *this;
 }
 template<typename T> vector_3d<T> & vector_3d<T>::operator=( T const * v )
 {
-	for(int i = 0; i < 3; ++i) this->_3d_r[i] = v[i];
+	for(int i = 0; i < 3; ++i) this->_data[i] = v[i];
 	return *this;
 }
 
-template<typename T> typename vector_3d<T>::const_pointer vector_3d<T>::data()const{ return this->_3d_r;}
-template<typename T> typename vector_3d<T>::pointer vector_3d<T>::data(){ return this->_3d_r;}
-template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::operator[](int i)const{ return this->_3d_r[i];}
-template<typename T> typename vector_3d<T>::reference vector_3d<T>::operator[](int i){ return this->_3d_r[i];}
+template<typename T> typename vector_3d<T>::const_pointer vector_3d<T>::data()const{ return this->_data;}
+template<typename T> typename vector_3d<T>::pointer vector_3d<T>::data(){ return this->_data;}
+template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::operator[](int i)const{ return this->_data[i];}
+template<typename T> typename vector_3d<T>::reference vector_3d<T>::operator[](int i){ return this->_data[i];}
 // x, y, z
-template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::x()const{ return this->_3d_r[0];}
-template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::y()const{ return this->_3d_r[1];}
-template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::z()const{ return this->_3d_r[2];}
-template<typename T> typename vector_3d<T>::reference vector_3d<T>::x(){ return this->_3d_r[0];}
-template<typename T> typename vector_3d<T>::reference vector_3d<T>::y(){ return this->_3d_r[1];}
-template<typename T> typename vector_3d<T>::reference vector_3d<T>::z(){ return this->_3d_r[2];}
+template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::x()const{ return this->_data[0];}
+template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::y()const{ return this->_data[1];}
+template<typename T> typename vector_3d<T>::const_reference vector_3d<T>::z()const{ return this->_data[2];}
+template<typename T> typename vector_3d<T>::reference vector_3d<T>::x(){ return this->_data[0];}
+template<typename T> typename vector_3d<T>::reference vector_3d<T>::y(){ return this->_data[1];}
+template<typename T> typename vector_3d<T>::reference vector_3d<T>::z(){ return this->_data[2];}
 // sqr
 template<typename T> typename vector_3d<T>::value_type vector_3d<T>::sqr()const
 {
@@ -158,7 +158,7 @@ template<typename T> vector_3d<T> & vector_3d<T>::norm()
 	value_type __len;
 	this->len( __len );
 	for(int i = 0; i < 3; ++i)
-		this->_3d_r[i] /= __len;
+		this->_data[i] /= __len;
 	return *this;
 }
 template<typename T> void vector_3d<T>::norm( vector_3d<T> & v )const

@@ -17,7 +17,7 @@ public:
 	typedef T const & const_reference;
 	typedef T float_type;
 protected:
-	T _3d_r[3];
+	T _data[3];
 	template<typename U>
 	__VECTOR_3D__INLINE void log(const char * _method)const;
 	__VECTOR_3D__INLINE void log(const char * _method)const;
