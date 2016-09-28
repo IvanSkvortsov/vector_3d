@@ -46,6 +46,14 @@ int demo_vec3d()
 
 	vector_3d<T> v5 = {1, 3, 9};
 	print_v3d( v5, "v5" );
+	v5 = vector_3d<int>( 3, 4, 7 );// call operator=( vector_3d<int> const & )
+	//v5 = {3, 4, 7};// call operator=( vector_3d<T> const & )
+	print_v3d( v5, "v5" );
+
+	vector_3d<int> v6 = {5, 9, 11};
+	print_v3d( v6, "v6" );
+	vector_3d<T> v7( v6 );
+	print_v3d( v7, "v7" );
 	return 0;
 }
 

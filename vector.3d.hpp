@@ -81,10 +81,12 @@ template<typename T> vector_3d<T>::vector_3d( vector_3d<T> const & v ) : _data{ 
 template<typename T>
 template<typename U> vector_3d<T> & vector_3d<T>::operator=( vector_3d<U> const & v )
 {
+	this->log<U>("operator=( vector_3d<U> const & )");
 	return this->operator=( v.data() );
 }
 template<typename T> vector_3d<T> & vector_3d<T>::operator=( vector_3d<T> const & v )
 {
+	this->log("operator=( vector_3d<T> const & )");
 	if( this == &v )
 		return *this;
 	return this->operator=( v.data() );
